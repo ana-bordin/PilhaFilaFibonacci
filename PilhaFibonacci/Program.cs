@@ -1,10 +1,7 @@
-﻿using System.Runtime.Intrinsics.X86;
-
-namespace FilaFibonacci
+﻿namespace PilhaFibonacci
 {
     internal class Program
     {
-        
         static int n1, n2, aux, op;
         static void Checar()
         {
@@ -15,10 +12,10 @@ namespace FilaFibonacci
                 op = int.Parse(Console.ReadLine());
             }
         }
-        static void PovoarFila(FilaFibonacci fila)
+        static void PovoarPilha(PilhaFibonacci pilha)
         {
             for (int i = 0; i < op; i++)
-                fila.Push(Calcular());
+                pilha.Push(Calcular());
         }
         static NumeroFibonacci Calcular()
         {
@@ -33,19 +30,18 @@ namespace FilaFibonacci
             do
             {
                 n1 = -1;
-                n2 = 1; 
+                n2 = 1;
                 aux = 0;
-                FilaFibonacci fila = new FilaFibonacci();
+                PilhaFibonacci pilha = new PilhaFibonacci();
                 Console.WriteLine(">>>Sequencia Fibonacci<<<");
                 Console.WriteLine("\nQuantos Números da sequencia Fibonacci você quer ver?\n");
                 Checar();
-                PovoarFila(fila);
+                PovoarPilha(pilha);
                 Console.WriteLine("Elementos da Sequencia:");
-                fila.Print();
+                pilha.Print();
                 Console.ReadKey();
                 Console.Clear();
             } while (true);
         }
     }
 }
-

@@ -1,30 +1,34 @@
-﻿namespace FilaFibonacci
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PilhaFibonacci
 {
-    internal class FilaFibonacci
+    internal class PilhaFibonacci
     {
         NumeroFibonacci Head;
-        NumeroFibonacci Tail;
-        public FilaFibonacci()
+        public PilhaFibonacci()
         {
             Head = null;
-            Tail = null;
         }
         public bool IsEmpty()
         {
-            return Head == null && Tail == null;
+            return Head == null;
         }
         public string MessageEmpty()
         {
-            return "Fila Vazia!";
+            return "Pilha Vazia!";
         }
         public void Push(NumeroFibonacci aux)
         {
             if (IsEmpty())
-                Head = Tail = aux;
+                Head = aux;
             else
             {
-                Tail.SetNext(aux);
-                Tail = aux;
+                aux.SetPrevious(Head);
+                Head = aux;
             }
         }
         public void Print()
@@ -37,8 +41,8 @@
                 do
                 {
                     Console.Write($"{aux.ToString()}, ");
-                    aux = aux.GetNext();
-                } while (aux != Tail.GetNext());
+                    aux = aux.GetPrevious();
+                } while (aux != null);
             }
         }
     }
